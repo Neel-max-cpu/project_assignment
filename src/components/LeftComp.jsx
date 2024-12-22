@@ -1,10 +1,10 @@
 import React from 'react'
-import img1 from "../assets/img/left_copy.png"
+import img1 from "../assets/img/left.png"
 
 const LeftComp = () => {
   return (
-    <div className="max-w-full max-h-full overflow-hidden">
-      <img src={img1} alt="" className='object-contain w-full h-auto' />
+    <div className="w-full h-full bg-white shadow-sm">
+      <img src={img1} alt="" className='object-contain w-full h-full' />
     </div>
   )
 }
