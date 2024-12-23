@@ -34,16 +34,14 @@ const DataRepo = () => {
                                     {repo.visibility}
                                 </span>
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-gray-500">
+                            <div className="flex items-center gap-8 text-sm text-gray-500">
                                 <span className="flex items-center gap-1.5">
                                     <span>{repo.language}</span>                                
                                     <div className="bg-blue-500 rounded-full w-2 h-2"></div>
                                 </span>
-                                <span className="">                                    
-                                    <div className="flex gap-2">
-                                    <Database className="text-black"/>
+                                <span className="flex items-center gap-1">                                    
+                                    <Database className="text-black h-4 w-4"/>
                                     {repo.size} KB
-                                    </div>
                                 </span>
                                 <span>Updated {repo.updatedAt}</span>
                             </div>
