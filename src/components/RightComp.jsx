@@ -5,7 +5,7 @@ import img1 from "../assets/img/CodeAnt Ai.png"
 const RightComp = () => {
   return (
     <div>
-      <div className='flex flex-col items-center my-3 bg-white rounded-lg shadow-md w-full max-w-md mx-auto'>
+      <div className='flex flex-col items-center my-3 bg-white rounded-lg shadow-lg w-full max-w-md mx-auto'>
         <img src={img1} alt="" className="w-3/4 max-w-xs object-contain"/>
         <h1 className='text-2xl sm:text-2xl mb-3 font-bold'>Welcome to CodeAnt AI</h1>
         <TabsDemo />

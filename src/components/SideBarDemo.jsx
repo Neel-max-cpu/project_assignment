@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { cn } from "../lib/utils"
 
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 
 import {
     Sidebar,
@@ -68,8 +69,15 @@ const SideBarDemo = () => {
     const handleItemClick = (title) => {
         setActiveItem(title);
     };
+    
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/');
+    }
 
     return (
+
         <div>
             <Sidebar>
                 <SidebarHeader>
@@ -96,7 +104,7 @@ const SideBarDemo = () => {
                                         <SidebarMenuButton
                                             asChild
                                             className={cn(
-                                                "w-3/4 rounded-lg flex items-center space-x-2 px-3 py-2 text-sm font-medium transition-colors",
+                                                "w-3/4 rounded-xl flex items-center space-x-2 px-3 py-2 text-sm font-medium transition-colors",
                                                 activeItem === item.title
                                                     ? "bg-blue-500 text-white"
                                                     : "text-gray-700 hover:bg-gray-100"
@@ -119,9 +127,9 @@ const SideBarDemo = () => {
                         <Phone/>
                         <span>Support</span>
                     </SidebarMenuButton>
-                    <SidebarMenuButton className="w-3/4 rounded-lg flex items-center space-x-2 px-3 py-2 text-sm font-medium transition-colors text-gray-700">
+                    <SidebarMenuButton className="w-3/4 rounded-lg flex items-center space-x-2 px-3 py-2 text-sm font-medium transition-colors text-gray-700"  onClick={handleClick}>
                         <LogOut/>
-                        <span>Logout</span>
+                        <span>Logout</span>                       
                     </SidebarMenuButton>
                 </SidebarFooter>
             </Sidebar>

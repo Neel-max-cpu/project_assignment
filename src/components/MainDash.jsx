@@ -5,9 +5,8 @@ import {
     SidebarProvider,
 } from "./ui/sidebar"
 
-
-
 import SideBarDemo from './SideBarDemo';
+import Repo from './Repo';
 
 
 
@@ -15,22 +14,22 @@ import SideBarDemo from './SideBarDemo';
 
 
 const MainDash = () => {
-  
+
 
     return (
         <div className='flex h-screen bg-[#FAFAFA]'>
             {/* side bar */}
-            <div className=' bg-white text-black shadow-lg'>
-                <SidebarProvider>
+            <div className=' bg-white text-black shadow-lg w-1/6 h-screen'>
+                <SidebarProvider className="w-full h-screen">
                     {/* main side bar */}
-                    <SideBarDemo/>                
+                    <SideBarDemo className="w-full h-full" />
                 </SidebarProvider>
             </div>
 
             {/* main content */}
-            <div className="flex-grow flex items-center justify-center">
-                <div className="bg-yellow-500 h-[90%] w-full max-w-4xl p-6 rounded-lg shadow-lg"></div>
-
+            <div className="h-screen w-5/6 mx-auto px-4 py-4 shadow-lg">                                
+                {/* content */}
+                <Repo/>                
             </div>
 
         </div>
