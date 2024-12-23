@@ -78,8 +78,8 @@ const SideBarDemo = () => {
 
     return (
 
-        <div>
-            <Sidebar>
+        <div className='w-full h-full'>
+            <Sidebar className="h-full w-1/6">
                 <SidebarHeader>
                     <img src={img1} alt="logo" className='w-full h-full' />
 
@@ -123,11 +123,11 @@ const SideBarDemo = () => {
                     <SidebarGroup />
                 </SidebarContent>
                 <SidebarFooter>
-                    <SidebarMenuButton className="w-3/4 rounded-lg flex items-center space-x-2 px-3 py-2 text-sm font-medium transition-colors text-gray-700">
+                    <SidebarMenuButton className="w-3/4 rounded-lg flex items-center space-x-2 px-5 py-2 text-sm font-medium transition-colors text-gray-700">
                         <Phone/>
                         <span>Support</span>
                     </SidebarMenuButton>
-                    <SidebarMenuButton className="w-3/4 rounded-lg flex items-center space-x-2 px-3 py-2 text-sm font-medium transition-colors text-gray-700"  onClick={handleClick}>
+                    <SidebarMenuButton className="w-3/4 rounded-lg flex items-center space-x-2 px-5 py-2 text-sm font-medium transition-colors text-gray-700"  onClick={handleClick}>
                         <LogOut/>
                         <span>Logout</span>                       
                     </SidebarMenuButton>
