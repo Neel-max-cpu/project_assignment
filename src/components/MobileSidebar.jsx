@@ -1,76 +1,122 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./ui/sheet"
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select"
-import { Button } from './ui/button'
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  IconButton,
+} from '@mui/material'
 
 
-// img
-import img1 from "../assets/img/CodeAnt Ai.png"
+// icons ------------
+import { X, Home, Code2, Cloud, BookText, Settings2, Phone, LogOut } from 'lucide-react'
 
-// icons
-import { SeparatorVertical, Home, Cloud, BookText, Settings, Phone, LogOut, Menu, X } from "lucide-react"
+// image
+import img1 from "../assets/img/CodeAnt Ai_mobile.png"
 
 const navigationItems = [
-  { title: 'Repositories', icon: <Home /> },
-  { title: 'AI Code Review', icon: <SeparatorVertical /> },
-  { title: 'Cloud Security', icon: <Cloud /> },
-  { title: 'How to Use', icon: <BookText /> },
-  { title: 'Settings', icon: <Settings /> },
-  { title: 'Support', icon: <Phone /> },
-  { title: 'Logout', icon: <LogOut /> },
+  { title: 'Repositories', icon: Home },
+  { title: 'AI Code Review', icon: Code2 },
+  { title: 'Cloud Security', icon: Cloud },
+  { title: 'How to Use', icon: BookText },
+  { title: 'Settings', icon: Settings2 },
+  { title: 'Support', icon: Phone },
+  { title: 'Logout', icon: LogOut },
 ];
 
-
-
 const MobileSidebar = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate('/');
+    onClose();
+  };
+
   return (
-    <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0">
-        <SheetHeader className="p-4 border-b">
-          <div className="flex justify-between items-center">
-            <img src="/logo.png" alt="CodeAnt AI" className="h-8" />
-            <button onClick={onClose}>
-              <X className="h-6 w-6" />
-            </button>
+    <Drawer
+      anchor="top"
+      open={isOpen}
+      onClose={onClose}
+      PaperProps={{
+        sx: {
+          width: '100%',
+          maxHeight: '90vh',
+          borderRadius: '0 0 16px 16px',
+          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+        },
+      }}
+    >
+      <div className="flex flex-col bg-white">
+        {/* Header */}
+        <div className="flex justify-between items-center p-4 border-b">
+          <div className="flex items-center gap-2">
+            <img src={img1} alt="CodeAnt AI" className="h-8" />            
           </div>
+          <IconButton onClick={onClose} size="small">
+            <X className="h-5 w-5" />
+          </IconButton>
+        </div>
+
+        {/* User Selector */}
+        <div className="p-4">
+          <select className="w-full border border-gray-300 bg-gray-50 rounded-xl p-2">
+            <option className='w-full border border-gray-100 bg-gray-50 rounded-xl p-2' value="user1">User1</option>
+            <option value="user2">User2</option>
+          </select>
+        </div>
+
+
+        {/* User Select */}
+        {/* <div className="p-4">
           <Select>
-            <SelectTrigger className="w-full rounded-lg border border-gray-300">
-              <SelectValue placeholder="UtkarshDhairyaPanwar" />
+            <SelectTrigger className="w-full rounded-xl border border-gray-200 bg-gray-50">
+              <SelectValue placeholder="User1" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="user1">UtkarshDhairyaPanwar</SelectItem>
+              <SelectItem value="user1">User1</SelectItem>
               <SelectItem value="user2">User 2</SelectItem>
             </SelectContent>
           </Select>
-        </SheetHeader>
-        <div className="py-4">
-          {navigationItems.map((item) => (
-            <button
-              key={item.title}
-              className="w-full px-4 py-3 flex items-center space-x-3 hover:bg-gray-100"
-            >
-              <span>{item.icon}</span>
-              <span>{item.title}</span>
-            </button>
-          ))}
-        </div>
-      </SheetContent>
-    </Sheet>
-  )
-}
+        </div> */}
 
-export default MobileSidebar
+        {/* Navigation List */}
+        <List sx={{ width: '100%', padding: 0 }}>
+          {navigationItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <ListItem
+                key={item.title}
+                onClick={item.title === 'Logout' ? handleLogout : undefined}
+                button
+                sx={{
+                  padding: '12px 16px',
+                  '&:hover': {
+                    backgroundColor: '#F9FAFB',
+                  },
+                }}
+              >
+                <ListItemIcon sx={{ minWidth: 40 }}>
+                  <Icon className="h-5 w-5 text-gray-600" />
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.title}
+                  sx={{
+                    '& .MuiListItemText-primary': {
+                      fontSize: '0.875rem',
+                      fontWeight: 500,
+                    },
+                  }}
+                />
+              </ListItem>
+            );
+          })}
+        </List>
+      </div>
+    </Drawer>
+  );
+};
+
+export default MobileSidebar;
+
