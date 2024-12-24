@@ -5,6 +5,8 @@ import {
     SidebarProvider,
 } from "./ui/sidebar"
 
+import { Button } from "./ui/button";
+
 import SideBarDemo from './SideBarDemo';
 import Repo from './Repo';
 import MobileSidebar from './MobileSidebar';
@@ -13,7 +15,10 @@ import repositories from "../assets/data/repositories.json";
 
 
 // img ----
-import img1 from "../assets/img/CodeAnt Ai.png"
+import img1 from "../assets/img/CodeAnt Ai_mobile.png"
+
+// icons
+import {Menu } from 'lucide-react';
 
 const MainDash = () => {
 
@@ -22,7 +27,7 @@ const MainDash = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
+            setIsMobile(window.innerWidth < 1024);
         };
 
         handleResize();
@@ -36,15 +41,14 @@ const MainDash = () => {
         <div className='min-h-screen bg-gray-50'>
             <div className='flex items-center justify-between p-4 bg-white border-b'>
                 <img src={img1} alt="CodeAnt AI" className="h-8" />
-                <button onClick={() => setIsSidebarOpen(true)}>
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"/>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                </button>
+                <Button className="shadow-none" onClick={() => setIsSidebarOpen(true)}>
+                    <Menu className='h-14 w-14'/>                    
+                </Button>
             </div>
             <div className='p-1'>
                 <RepositoryList repositories={repositories} />
             </div>
-            <MobileSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            <MobileSidebar className="bg-white" isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
         </div>
     );
 
