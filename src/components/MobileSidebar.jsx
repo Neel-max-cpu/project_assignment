@@ -9,6 +9,15 @@ import {
   IconButton,
 } from '@mui/material'
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+
+
 
 // icons ------------
 import { X, Home, Code2, Cloud, BookText, Settings2, Phone, LogOut } from 'lucide-react'
@@ -52,7 +61,7 @@ const MobileSidebar = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="flex justify-between items-center p-4 border-b">
           <div className="flex items-center gap-2">
-            <img src={img1} alt="CodeAnt AI" className="h-8" />            
+            <img src={img1} alt="CodeAnt AI" className="h-8" />
           </div>
           <IconButton onClick={onClose} size="small">
             <X className="h-5 w-5" />
@@ -60,14 +69,14 @@ const MobileSidebar = ({ isOpen, onClose }) => {
         </div>
 
         {/* User Selector */}
-        <div className="p-4">
-          <select className="w-full border border-gray-300 bg-gray-50 rounded-xl p-2">
-            <option className='w-full border border-gray-100 bg-gray-50 rounded-xl p-2' value="user1">User1</option>
+        <div className="p-4 overflow-hidden">
+          <select className="w-full border border-gray-300 bg-gray-50 rounded-xl appearance-none p-2">
+            <option value="user1">User1</option>
             <option value="user2">User2</option>
           </select>
         </div>
 
-
+        
         {/* User Select shadcn didn't work*/}
         {/* <div className="p-4">
           <Select>
