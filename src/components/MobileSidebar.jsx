@@ -68,7 +68,7 @@ const MobileSidebar = ({ isOpen, onClose }) => {
         </div>
 
 
-        {/* User Select */}
+        {/* User Select shadcn didn't work*/}
         {/* <div className="p-4">
           <Select>
             <SelectTrigger className="w-full rounded-xl border border-gray-200 bg-gray-50">
